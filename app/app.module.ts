@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent }  from './app.component';
+import { HeaderComponent } from "./common/layout/header.component";
 import { FooterComponent } from "./common/layout/footer.component";
 
 @NgModule({
