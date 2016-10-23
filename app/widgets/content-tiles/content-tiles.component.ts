@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Event as EventItem } from "./../../models/event.model";
+import { EventsService } from "./../../services/events.service";
+
 @Component({
   moduleId: module.id,
   selector: "app-content-tiles",
@@ -9,25 +11,12 @@ import { Event as EventItem } from "./../../models/event.model";
 export class ContentTilesComponent implements OnInit {
   events: Array<EventItem> = [];
 
-  constructor() {
+  constructor(private _eventsService: EventsService) {
 
   }
 
   public ngOnInit() {
-    this.events = this.getEvents();
+    this.events = this._eventsService.getEvents();
   }
 
-  public getEvents(): Array<EventItem> {
-    return this.events = [
-      {
-        id: "8",
-        topics: "technics",
-        thumbnail: "/img/t-5.jpeg",
-        url: "index.html",
-        title: "Tech 1",
-        summary: "Ut enim ad minim veniam",
-        other: "Extra"
-      }
-    ];
-  }
 }
