@@ -8,6 +8,8 @@ import { Component } from "@angular/core";
       footer {
         background-color: #efefef;
         min-height: 50px;
+        padding: 2em 0;
+        margin-top: 2em;
       }
     `
   ]
