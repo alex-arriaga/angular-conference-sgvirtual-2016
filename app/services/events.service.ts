@@ -1,14 +1,19 @@
 import { Injectable } from "@angular/core";
 import { Event } from "./../models/event.model";
+import { Http } from "@angular/http";
 
 @Injectable()
 export class EventsService {
 
-  constructor() {
+  baseURLPort: string = "3000";
+  baseURL: string = "http://cosasextraordinarias.com";
 
+  constructor(private _http: Http) {
+    this.baseURL = `${this.baseURL}:${this.baseURLPort}`;
   }
 
   public getEvents(): Array<Event> {
+    // /events
     return [
       {
         id: "8",
