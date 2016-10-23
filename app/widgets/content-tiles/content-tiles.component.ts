@@ -16,7 +16,16 @@ export class ContentTilesComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.events = this._eventsService.getEvents();
+    this._eventsService.getEvents().subscribe((data) => {
+        this.events = data;
+      },
+      error => {
+        console.error(error);
+      },
+      () => {
+        console.info("<< this._eventsService.getEvents() < Finished");
+      }
+    );
   }
 
 }
