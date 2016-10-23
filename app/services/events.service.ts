@@ -9,17 +9,23 @@ export class EventsService {
 
   baseURLPort: string = "3000";
   baseURL: string = "http://cosasextraordinarias.com";
+  baseUrlAPI : string = "";
 
   constructor(private _http: Http) {
-    this.baseURL = `${this.baseURL}:${this.baseURLPort}`;
+    this.baseUrlAPI = `${this.baseURL}:${this.baseURLPort}`;
   }
 
   public getEvents(): Observable<Array<Event>> {
-    let serviceURL: string = `${this.baseURL}/events`;
-    console.log(serviceURL);
+    let serviceURL: string = `${this.baseUrlAPI}/events`;
+
     return this._http.get(serviceURL).map((response: Response) => {
-      console.log("-- getEvents() > Response from external service: %o", response.json());
-      return response.json();
+      // Fix the URL for images
+      let items = response.json();
+      items.forEach((event : Event) => {
+        event.thumbnail = `${this.baseURL}/api-images/${event.thumbnail.replace("/img/", "")}`;
+      });
+      console.log("-- getEvents() > Response from external service: %o", items);
+      return items;
     });
   }
 }
