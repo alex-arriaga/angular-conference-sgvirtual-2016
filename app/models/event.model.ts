@@ -1,5 +1,5 @@
 export class Event {
-  id: string;
+  id?: string;
   topics: string;
   thumbnail: string;
   url: string;
