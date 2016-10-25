@@ -33,7 +33,6 @@ export class ContentTilesComponent implements OnInit {
     };
 
     this._eventsService.createEvent(newEventItem).subscribe(data => {
-      console.log(data);
       this.getEvents();
     }, err => {
       console.error(err);

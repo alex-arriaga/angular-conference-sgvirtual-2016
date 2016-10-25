@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let event of events">
       <div class="item well">
-        <h2>{{event.title}}</h2>
+        <h2>{{event.title}} ({{event.id}})</h2>
         <img class="item__thumbnail img-responsive" src="{{event.thumbnail}}" alt="{{event.title}}">
         <div class="item__summary">
           {{event.summary}}
