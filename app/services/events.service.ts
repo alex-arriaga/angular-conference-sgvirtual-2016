@@ -26,8 +26,21 @@ export class EventsService {
         event.thumbnail = `${this.baseURL}/api-images/${event.thumbnail.replace("/img/", "")}`;
       });
       console.log("-- getEvents() > Response from external service: %o", items);
-      return items;
+      return this.sortEventsById(items);
     });
+  }
+
+  // Sort items by id (most recent at the beginning)
+  public sortEventsById(items: Array<Event>, direction = "desc") {
+
+    let sortedItems = _.sortBy(items, [function (item: Event) {
+      return parseInt(item.id, 10);
+    }]);
+
+    if (direction.toLowerCase() === "desc") {
+      return sortedItems.reverse();
+    }
+    return sortedItems;
   }
 
   public createEvent(event: Event): Observable<Response> {
